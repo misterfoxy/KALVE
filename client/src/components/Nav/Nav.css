@@ -1,0 +1,20 @@
+.navbar{
+  text-align: center;
+  padding: 20px 0 20px 0;
+  background: linear-gradient(to left, #ccc, #333, #ccc)
+}
+
+.navbar_brand {
+  text-align: center;
+}
+
+.navbar-brand{
+  color:white;
+  display:block;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.navbar_link{
+  padding-top: 30px;
+}
