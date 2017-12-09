@@ -1,18 +1,22 @@
 .navbar{
   text-align: center;
   padding: 20px 0 20px 0;
-  background: linear-gradient(to left, #ccc, #333, #ccc)
+  background: linear-gradient(to right, #dd6449, #e0ed57, #3ed5dd, #732bef);
 }
 
-.navbar_brand {
+/* .navbar_brand {
   text-align: center;
+} */
+
+.navbar-brand:hover{
+  color: black;
 }
 
 .navbar-brand{
   color:white;
   display:block;
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 56px;
+  margin-bottom: 10px;
 }
 
 .navbar_link{
