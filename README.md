@@ -1,42 +1,23 @@
-# Create React Express App
+# KALVE
 
-## About This Boilerplate
+## About This Application
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+What I attemtped to create is  an application that exists to rethink the custom apparel process. The industry is plagued with novel long email correspondence, communication breakdowns, outrageous prices, and a lack of strong tech. 
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+With Kalve, I set out to rethink the order process, highlighting what questions are most important between both parties during a proof
+request. After reviewing many of our request emails from clients, the standouts demands where for type of shirts, color, quantity, and price. Kalve is a full-stack application, which allows for dynamic page updates using bleeding-edge technology. Each category carries with it the available colors, and price(both in total, or unit). Currently, the application is optimized for Tee Shirts, but I hope to add the rest of my inventory, including hats, outerwear, swimsuits, towels, embroidery work, and athletic apparel.
 
-## Starting the app locally
+## Development Information
+Kalve was developed using the MERN stack. MongoDB is used for storing information about orders, pricing models, and users. Express is used for routing and server logic. React is used for the dynamic order-form. Node is used for package management and incorporating additional dependencies. 
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
+Additional dependencies include:
+>stripe
+>bcrypt
+>react-router
 
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
 
-After both installations complete, run the following command in your terminal:
 
-```
-yarn start
-```
 
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Future Development
 
-## Deployment (Heroku)
-
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
-
-1. Build the React app for production by running the following command:
-
-```
-yarn build
-```
-
-2. Add and commit all changes to git
-
-3. Push to Heroku
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
+A simplified application is only the first steps for this software. Next major steps in development include single unit shipping, social interactivity, crowdfunding, persistent stores, order design software, friend/global activity feeds, and much more.
