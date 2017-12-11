@@ -6,12 +6,22 @@ class Order extends React.Component {
         super();
         this.state = {
             quantity: 0,
-            price: 0.00
+            price: 0.00,
+            selectedOption: 'ccss'
 
         };
         
         
     };
+
+    handleOptionChange(changeEvent) {
+        console.log(changeEvent.target.value);
+        this.setState({
+          selectedOption: changeEvent.target.value
+        });
+
+        
+    }
 
     handleChange(event){
         let value = event.currentTarget.value;
@@ -19,6 +29,7 @@ class Order extends React.Component {
             quantity: value
         });
         this.computePrice(value);
+        
     };
 
     computePrice = quantity => {
@@ -74,34 +85,48 @@ class Order extends React.Component {
     
     render(){
         return(
-            <div className="container-fluid">
+            <div className="container-fluid order">
                 <div className="row">
                     <div className="col">
                     <form>
                     <div className="radio">
                       <label>
-                        <input type="radio" value="option1" checked={true} />
-                        Option 1
+                        <input type="radio" value="ccss" checked={this.state.selectedOption === 'ccss'} onChange={this.handleOptionChange.bind(this)} />
+                        Comfort Colors Short Sleeve Tee
                       </label>
                     </div>
                     <div className="radio">
                       <label>
-                        <input type="radio" value="option2" />
-                        Option 2
+                        <input type="radio" value="ccls" checked={this.state.selectedOption === 'ccls'} onChange={this.handleOptionChange.bind(this)}/>
+                        Comfort Colors Long Sleeve Tee
                       </label>
                     </div>
                     <div className="radio">
                       <label>
-                        <input type="radio" value="option3" />
-                        Option 3
+                        <input type="radio" value="hss" checked={this.state.selectedOption === 'hss'} onChange={this.handleOptionChange.bind(this)}/>
+                       Hanes Classic Short Sleeve Tee
+                      </label>
+                    </div>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" value="hls" checked={this.state.selectedOption === 'hls'} onChange={this.handleOptionChange.bind(this)} />
+                        Hanes Classic Long Sleeve Tee
                       </label>
                     </div>
                   </form>
                     </div>
                 </div>
+                <div className="row">  
+                    <div className="col">
+                        <button className="color" onClick="">Choose Colors</button>
+                    </div>
+                </div>
                 <div className="form-group row">
-                    <input onChange={this.handleChange.bind(this)} placeholder="Quantity"></input>
-                    <span>${this.state.price}</span>
+                    
+                    
+                    <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
+                    <span>Total Cost: ${this.state.price}</span>
+                    
                 </div>
             </div>
         );
