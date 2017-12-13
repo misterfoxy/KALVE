@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ColorPallette from "../../components/ColorPallette";
 import "./Order.css";
 
 class Order extends React.Component {
@@ -8,7 +9,7 @@ class Order extends React.Component {
             quantity: 0,
             price: 0.00,
             selectedOption: 'ccss'
-
+            
         };
         
         
@@ -32,7 +33,7 @@ class Order extends React.Component {
         
     };
 
-    computePrice = quantity => {
+    computePrice(quantity) {
         let price = 1.00;
 
         if(quantity <= 11){
@@ -86,27 +87,44 @@ class Order extends React.Component {
     render(){
         return(
             <div className="container-fluid order">
-                <div className="row">
-                    <div className="col">
-                    <form>
+              <div className="row">
+
+                <div className="col">
+                  <form>
                     <div className="radio">
                       <label>
                         <input type="radio" value="ccss" checked={this.state.selectedOption === 'ccss'} onChange={this.handleOptionChange.bind(this)} />
                         Comfort Colors Short Sleeve Tee
                       </label>
                     </div>
+                    </form>
+                </div>
+
+                    <div className="col">
+                    <form>
                     <div className="radio">
                       <label>
                         <input type="radio" value="ccls" checked={this.state.selectedOption === 'ccls'} onChange={this.handleOptionChange.bind(this)}/>
                         Comfort Colors Long Sleeve Tee
                       </label>
                     </div>
+                    </form>
+                    </div>
+                    
+                    <div className="col">
+                    <form>
                     <div className="radio">
                       <label>
                         <input type="radio" value="hss" checked={this.state.selectedOption === 'hss'} onChange={this.handleOptionChange.bind(this)}/>
                        Hanes Classic Short Sleeve Tee
                       </label>
                     </div>
+                    </form>
+                    </div>
+
+                    <div className="col">
+                    <form>
+
                     <div className="radio">
                       <label>
                         <input type="radio" value="hls" checked={this.state.selectedOption === 'hls'} onChange={this.handleOptionChange.bind(this)} />
@@ -114,20 +132,27 @@ class Order extends React.Component {
                       </label>
                     </div>
                   </form>
-                    </div>
+                  </div>
+                    
                 </div>
-                <div className="row">  
-                    <div className="col">
-                        <button className="color" onClick="">Choose Colors</button>
+                <div className="row center-block colors">  
+                    <div className="col btn-group">
+                        <ColorPallette />
+                       
                     </div>
                 </div>
                 <div className="form-group row">
                     
                     
                     <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
-                    <span>Total Cost: ${this.state.price}</span>
-                    
+                   
                 </div>
+
+                <div className="row text-center">
+                <div className="col">
+                    <span className="totalPrice">Total: ${this.state.price}</span>
+                    </div>
+            </div>
             </div>
         );
     }

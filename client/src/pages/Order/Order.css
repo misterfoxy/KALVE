@@ -10,3 +10,14 @@ body {
 .order{
     color: white;
 }
+
+.color{
+    margin: 0;
+    float: left;
+    text-align: center;
+}
+
+.totalPrice{
+   
+    font-size: 60px;
+}
