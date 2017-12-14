@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import RegisterBtn from "../../components/RegisterBtn";
+import API from "../../utils/API"
 
 class Login extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            usrLogin: '',
-            passLogin: ''
+            registerName: '',
+            registerUser: '',
+            registerEmail: '',
+            registerPass: ''
         }
     }
 
@@ -50,7 +54,7 @@ class Login extends React.Component {
                         <h2>Register</h2>
                        </div>
                        <div className="card-block">
-                       <form action="users/register" method="POST">
+                       <form>
                        <div className="form-group">
                         <label>Name</label>
                         <input type="text" className="form-control" placeholder="Name" name="name"></input>
@@ -71,7 +75,7 @@ class Login extends React.Component {
     <label>Confirm Password</label>
     <input type="password" className="form-control" placeholder="Password" name="password2"></input>
   </div>
-                        <button type="submit" className="btn btn-default">Register</button>
+                        <RegisterBtn onClick={this.handleUserRegister}>Sign Up</RegisterBtn>
                         </form>
                        </div>
                     </div>
