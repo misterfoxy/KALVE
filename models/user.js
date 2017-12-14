@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('brcyptjs');
+const Schema = mongoose.Schema;
 
-const UserSchema = mongoose.Schema({
+const UserSchema = new Schema({
     username : {
       type: String,
       index: true
@@ -17,4 +18,5 @@ const UserSchema = mongoose.Schema({
     }
   });
 
-  const User = module.exports = mongoose.model("User", UserSchema);
+  const User =  mongoose.model("User", UserSchema);
+  module.exports = User;
