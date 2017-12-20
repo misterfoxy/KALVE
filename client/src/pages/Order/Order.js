@@ -153,6 +153,7 @@ class Order extends React.Component {
                     <span className="totalPrice">Total: ${this.state.price}</span>
                     </div>
             </div>
+            <input type="file" name="design_reference"></input>
             </div>
         );
     }

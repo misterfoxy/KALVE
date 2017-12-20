@@ -1,22 +1,47 @@
-const mongoose = require('mongoose');
-const bcrypt = require('brcyptjs');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt-nodejs');
 
-const UserSchema = new Schema({
-    username : {
-      type: String,
-      index: true
-    },
-    password: {
-      type: String
-    },
-    email: {
-      type: String
-    },
-    name: {
-      type: String
-    }
-  });
+// Define our user model
+const userSchema = new Schema({
+    email: {type: String, unique: true, lowercase:true},
+    password: String,
+    name: String, 
+    username: String
+});
 
-  const User =  mongoose.model("User", UserSchema);
-  module.exports = User;
+// on save hook, encrypt password
+// before saving model, execute function
+userSchema.pre('save', function(next){
+    const user = this;
+    
+    //generate a salt, and run callback
+    bcrypt.genSalt(10, function(err, salt){
+        if(err) { return next(err); }
+
+        //hash(encrypt) password with salt
+        bcrypt.hash(user.password, salt, null, function(err, hash){
+            if(err) { return next(err);}
+          
+            //overwrite plain text password with encrypted password
+            user.password = hash;
+            
+            // execute save hook
+            next();
+        });
+    });
+});
+
+userSchema.methods.comparePassword = function(candidatePassword, callback){
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if(err) { return callback(err); }
+        callback(null, isMatch);
+    });
+};
+
+//create the user model class
+
+const User = mongoose.model('user', userSchema);
+
+//export the usermodel
+module.exports = User;

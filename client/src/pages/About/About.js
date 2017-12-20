@@ -37,7 +37,8 @@ class About extends Component {
 
         <div className="row text-center">
           <div className="col-md-12">
-           <a href="/login"> <button className="btn btn-success">SIGN IN</button></a>
+          <a href="/login"> <button className="btn btn-danger">Login</button></a>
+           <a href="/signup"> <button className="btn btn-success">Signup</button></a>
           </div>
         </div>
         <Footer />
