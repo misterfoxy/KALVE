@@ -1,5 +1,6 @@
 import axios from "axios";
-const ROOT_URL = "http://localhost:3090"
+import setAuthorizationToken from "./setAuthorizationToken.js";
+const ROOT_URL = "http://localhost:3090";
 
 export default {
   
@@ -9,8 +10,10 @@ export default {
     axios.post(`${ROOT_URL}/signup`, user)
       .then(function(res){
         console.log(res);
+        
         const token = res.data.token;
         localStorage.setItem('jwtToken', token)
+        setAuthorizationToken(token);
         
         })
       .catch(function(err){console.log(err)});
@@ -21,6 +24,11 @@ export default {
     axios.post(`${ROOT_URL}/signin`, user)
       .then(function(res){
         console.log(res);
+        
+        const token = res.data.token;
+        localStorage.setItem('jwtToken', token);
+        setAuthorizationToken(token);
+
         })
       .catch(function(err){
         console.log(err);
