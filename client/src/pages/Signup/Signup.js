@@ -53,7 +53,7 @@ class Signup extends Component {
                         <h2>Register</h2>
                        </div>
                        <div className="card-block">
-                       <form action="users/register" method="POST">
+                       <form >
                        <div className="form-group">
                         <label>Name</label>
                         <input type="text" onChange={this.handleInputChange} className="form-control" placeholder="Name" name="name"></input>

@@ -7,13 +7,12 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user: "",
-            name: "",
+            email: "",
             password: "",
-            email: ""
+            loggedIn: false
         };
 
-        this.handleUserRegister = this.handleUserRegister.bind(this);
+        this.handleUserLogin = this.handleUserLogin.bind(this);
     
     }
     
@@ -26,20 +25,18 @@ class Login extends Component {
         });
     };
 
-    handleUserRegister(e){
+    handleUserLogin(e){
         e.preventDefault();
-
-       
+        const { history } = this.props;
         const newUser= {
-            username: this.state.user,
-            password: this.state.password,
             email: this.state.email,
-            name: this.state.name
+            password: this.state.password
         };
 
-        console.log(this.props.history)
-        API.saveUser(newUser);
-        
+      
+        API.checkLogin(newUser);
+        this.setState({ "loggedIn": true })
+        history.push("/dashboard")
     };
 
     render() {
@@ -54,17 +51,17 @@ class Login extends Component {
    <h2>Login</h2>
    </div>
    <div className="card-block">
-   <form action="/login" method="post">
+   <form>
    <div className="form-group">
-     <label>Username</label>
-     <input type="text" name="username" className="form-control" ></input>
+     <label>Email</label>
+     <input type="text" onChange={this.handleInputChange} name="email" className="form-control" ></input>
    </div>
    <div className="form-group">
      <label>Password</label>
-     <input type="password" name="password"  className="form-control" ></input>
+     <input type="password" onChange={this.handleInputChange} name="password"  className="form-control" ></input>
    </div>
 
-   <button type="submit" className="btn btn-default">Submit</button>
+   <button onClick={this.handleUserLogin} className="btn btn-default">Submit</button>
  </form>
    </div>
 </div>
