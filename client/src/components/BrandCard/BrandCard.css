@@ -1,0 +1,16 @@
+.card{
+    color: black;
+    margin: 0 auto; /* Added */
+    float: none;
+    
+}
+
+.quantity-input{
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+.select-brand{
+    background-color: aquamarine;
+}

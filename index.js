@@ -9,7 +9,7 @@ const cors = require("cors");
 
 // DB SETUP
 
-mongoose.connect("mongodb://localhost:auth/auth");
+mongoose.connect("mongodb://localhost:kalvedb");
 
 
 // App Setup Middleware
@@ -22,6 +22,9 @@ app.use(cors());
 
 // body-parser parses incoming requests, in this instance, it parses into JSON
 app.use(bodyParser.json({ type: '*/*' }));
+
+app.use(express.static("client/build"));
+
 router(app);
 
 

@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background: lightblue;
 }
 
 .form-group{
@@ -20,4 +20,8 @@ body {
 .totalPrice{
    
     font-size: 60px;
+}
+
+.brand-row{
+    margin-top: 20px;
 }

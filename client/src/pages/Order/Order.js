@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ColorPallette from "../../components/ColorPallette";
 import "./Order.css";
+import BrandCard from "../../components/BrandCard";
 
 class Order extends React.Component {
     constructor(){
@@ -87,53 +88,14 @@ class Order extends React.Component {
     render(){
         return(
             <div className="container-fluid order">
-              <div className="row">
 
-                <div className="col">
-                  <form>
-                    <div className="radio">
-                      <label>
-                        <input type="radio" value="ccss" checked={this.state.selectedOption === 'ccss'} onChange={this.handleOptionChange.bind(this)} />
-                        Comfort Colors Short Sleeve Tee
-                      </label>
-                    </div>
-                    </form>
-                </div>
-
-                    <div className="col">
-                    <form>
-                    <div className="radio">
-                      <label>
-                        <input type="radio" value="ccls" checked={this.state.selectedOption === 'ccls'} onChange={this.handleOptionChange.bind(this)}/>
-                        Comfort Colors Long Sleeve Tee
-                      </label>
-                    </div>
-                    </form>
-                    </div>
+                <div className="row text-center brand-row">
                     
-                    <div className="col">
-                    <form>
-                    <div className="radio">
-                      <label>
-                        <input type="radio" value="hss" checked={this.state.selectedOption === 'hss'} onChange={this.handleOptionChange.bind(this)}/>
-                       Hanes Classic Short Sleeve Tee
-                      </label>
-                    </div>
-                    </form>
-                    </div>
-
-                    <div className="col">
-                    <form>
-
-                    <div className="radio">
-                      <label>
-                        <input type="radio" value="hls" checked={this.state.selectedOption === 'hls'} onChange={this.handleOptionChange.bind(this)} />
-                        Hanes Classic Long Sleeve Tee
-                      </label>
-                    </div>
-                  </form>
-                  </div>
-                    
+                        <BrandCard onClick={() => {console.log('bits')}} brand="Comfort Colors Short Sleeve" />
+                        <BrandCard brand="Comfort Colors Long Sleeve" />
+                        <BrandCard brand="Hanes Long Sleeve" />
+                        <BrandCard brand="Hanes Short Sleeve" />
+                   
                 </div>
                 <div className="row center-block colors">  
                     <div className="col btn-group">
@@ -141,7 +103,7 @@ class Order extends React.Component {
                        
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row quantity-input">
                     
                     
                     <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
@@ -153,6 +115,9 @@ class Order extends React.Component {
                     <span className="totalPrice">Total: ${this.state.price}</span>
                     </div>
             </div>
+
+            <label htmlFor="design_reference">(Optional) Attach a Design for our team</label>
+            <br></br>
             <input type="file" name="design_reference"></input>
             </div>
         );
