@@ -1,5 +1,5 @@
 body {
-    background: lightblue;
+    background: rgb(15, 15, 15);
 }
 
 .form-group{
@@ -17,11 +17,38 @@ body {
     text-align: center;
 }
 
-.totalPrice{
+.totalPrice, .perUnitPrice{
    
     font-size: 60px;
 }
 
 .brand-row{
     margin-top: 20px;
+}
+
+.totalPrices {
+    background: lightcoral;
+    color: black;
+}
+
+.radio{
+    border: 5px solid lightcoral;
+    border-radius: 50px;
+    background: white;
+    color: black;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.radio label {
+    font-size: 20px;
+}
+
+.radio input {
+    visibility: hidden;
+}
+
+ input[checked] {
+    background: cyan;
 }

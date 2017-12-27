@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ColorPallette from "../../components/ColorPallette";
 import "./Order.css";
-import BrandCard from "../../components/BrandCard";
+
 
 class Order extends React.Component {
     constructor(){
@@ -9,6 +9,7 @@ class Order extends React.Component {
         this.state = {
             quantity: 0,
             price: 0.00,
+            perUnitPrice: 0.0,
             selectedOption: 'ccss'
             
         };
@@ -41,8 +42,10 @@ class Order extends React.Component {
             let unitPrice = 15;
             price = quantity * unitPrice;
 
+            let perUnitPrice = price / quantity;
             this.setState({
-                price: price
+                price: price,
+                perUnitPrice: perUnitPrice
             });
 
         }
@@ -51,8 +54,10 @@ class Order extends React.Component {
             let unitPrice = 13.50;
             price = quantity * unitPrice;
 
+            let perUnitPrice = price / quantity;
             this.setState({
-                price: price
+                price: price,
+                perUnitPrice: perUnitPrice
             });
         }
 
@@ -60,8 +65,10 @@ class Order extends React.Component {
             let unitPrice = 12;
             price = quantity * unitPrice;
 
+            let perUnitPrice = price / quantity;
             this.setState({
-                price: price
+                price: price,
+                perUnitPrice: perUnitPrice
             });
         }
 
@@ -69,15 +76,20 @@ class Order extends React.Component {
             let unitPrice = 10.50;
             price = quantity * unitPrice;
 
+            let perUnitPrice = price / quantity;
             this.setState({
-                price: price
+                price: price,
+                perUnitPrice: perUnitPrice
             });
         }
         else if (quantity >= 122){
             let unitPrice = 9;
             price = quantity * unitPrice;
+
+            let perUnitPrice = price / quantity;
             this.setState({
-                price: price
+                price: price,
+                perUnitPrice: perUnitPrice
             });
         }
 
@@ -88,36 +100,75 @@ class Order extends React.Component {
     render(){
         return(
             <div className="container-fluid order">
+              <div className="row">
 
-                <div className="row text-center brand-row">
-                    
-                        <BrandCard onClick={() => {console.log('bits')}} brand="Comfort Colors Short Sleeve" />
-                        <BrandCard brand="Comfort Colors Long Sleeve" />
-                        <BrandCard brand="Hanes Long Sleeve" />
-                        <BrandCard brand="Hanes Short Sleeve" />
-                   
+                <div className="col">
+                  <form>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" value="ccss" checked={this.state.selectedOption === 'ccss'} onChange={this.handleOptionChange.bind(this)} />
+                        Comfort Colors Short Sleeve Tee
+                      </label>
+                    </div>
+                    </form>
                 </div>
+
+                    <div className="col">
+                    <form>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" value="ccls" checked={this.state.selectedOption === 'ccls'} onChange={this.handleOptionChange.bind(this)}/>
+                        Comfort Colors Long Sleeve Tee
+                      </label>
+                    </div>
+                    </form>
+                    </div>
+                    
+                    <div className="col">
+                    <form>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" value="hss" checked={this.state.selectedOption === 'hss'} onChange={this.handleOptionChange.bind(this)}/>
+                       Hanes Classic Short Sleeve Tee
+                      </label>
+                    </div>
+                    </form>
+                    </div>
+
+                    <div className="col">
+                    <form>
+
+                    <div className="radio">
+                      <label htmlFor="radiohls">Hanes Classic Long Sleeve Tee</label>
+                        <input id="radiohls" type="radio" value="hls" checked={this.state.selectedOption === 'hls'} onChange={this.handleOptionChange.bind(this)} />
+                       
+                    </div>
+                  </form>
+                  </div>
+                    
+                </div>
+
                 <div className="row center-block colors">  
                     <div className="col btn-group">
                         <ColorPallette />
                        
                     </div>
                 </div>
-                <div className="form-group row quantity-input">
+                <div className="form-group text-center center-block row">
                     
-                    
-                    <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
-                   
+                    <div className="col">
+                        <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
+                    </div>
                 </div>
 
-                <div className="row text-center">
+                <div className="row totalPrices text-center">
                 <div className="col">
                     <span className="totalPrice">Total: ${this.state.price}</span>
                     </div>
+                <div className="col">
+                    <span className="perUnitPrice">Each Shirt will be ${this.state.perUnitPrice}</span>
+                </div>
             </div>
-
-            <label htmlFor="design_reference">(Optional) Attach a Design for our team</label>
-            <br></br>
             <input type="file" name="design_reference"></input>
             </div>
         );
