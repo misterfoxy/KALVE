@@ -14,6 +14,7 @@ class Order extends React.Component {
             
         };
         
+        this.handleOrderRequest = this.handleOrderRequest.bind(this);
         
     };
 
@@ -34,6 +35,19 @@ class Order extends React.Component {
         this.computePrice(value);
         
     };
+
+    handleOrderRequest(e){
+        e.preventDefault();
+
+        const newOrder = {
+            brand: this.state.selectedOption,
+            quantity: this.state.quantity,
+            price: this.state.price,
+            perUnitPrice: this.state.perUnitPrice
+        }
+
+        console.log(newOrder);
+    }
 
     computePrice(quantity) {
         let price = 1.00;
@@ -96,6 +110,7 @@ class Order extends React.Component {
     }
 
 
+
     
     render(){
         return(
@@ -148,10 +163,10 @@ class Order extends React.Component {
                     
                 </div>
 
-                <div className="row center-block colors">  
+                <div className="row colors">  
                     <div className="col btn-group">
                         <ColorPallette />
-                       
+                        
                     </div>
                 </div>
                 <div className="form-group text-center center-block row">
@@ -161,15 +176,30 @@ class Order extends React.Component {
                     </div>
                 </div>
 
-                <div className="row totalPrices text-center">
-                <div className="col">
-                    <span className="totalPrice">Total: ${this.state.price}</span>
-                    </div>
-                <div className="col">
-                    <span className="perUnitPrice">Each Shirt will be ${this.state.perUnitPrice}</span>
+                
+               <div className="form-group row">
+                
+                <input type="file" name="design_reference"></input>
+                <div className="col-10">
+                    <label for="additional">Describe your order to us</label>
+                    <textarea class="form-control" rows="5" id="additional" />
                 </div>
-            </div>
-            <input type="file" name="design_reference"></input>
+              </div>
+              <div className="row totalPrices text-center">
+                  <div className="col">
+                    <span className="totalPrice">Total: ${this.state.price}</span>
+                  </div>
+                  <div className="col">
+                    <span className="perUnitPrice">Each Shirt will be ${this.state.perUnitPrice}</span>
+                  </div>
+               </div>
+              
+              <div className="row text-center">
+              
+                <div className="col-12">
+                    <button onClick={this.handleOrderRequest}id="submitProofRequest" className="btn btn-default">SUBMIT ORDER REQUEST</button>
+                </div>
+              </div>
             </div>
         );
     }
