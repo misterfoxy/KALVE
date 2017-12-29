@@ -23,20 +23,20 @@ class ColorPallette extends React.Component {
         return (
             <div className="row text-center">
                 <div className="col">
-                <form onSubmit={this.handleSubmit}>
+                <form className="form-control" onSubmit={this.handleSubmit}>
                 <label>
                     Choose what color you want to print on
                     </label>
                     <br />
                     
-                    <select value={this.state.value} onChange={this.handleChange}>
+                    <select className="form-control" value={this.state.value} onChange={this.handleChange}>
                         <option value="red">red</option>
                         <option value="orange">orange</option>
                         <option value="yellow">yellow</option>
                         <option value="green">green</option>
                     </select>
                   
-                    <input type="submit" value="Submit" />
+                    <input className="form-control" type="submit" value="Submit" />
                     </form>
                 </div>
             </div>

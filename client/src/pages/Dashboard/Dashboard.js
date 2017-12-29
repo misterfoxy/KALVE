@@ -6,16 +6,18 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             jwt: null,
-            username: null
+            name: null
         }
     }
     componentDidMount() {
-        const jwt = localStorage.getItem('jwtToken');
+        // const jwt = localStorage.getItem('jwtToken');
+        const name = localStorage.getItem('name');
         this.setState({
-            jwt: jwt
+            // jwt: jwt,
+            name: name
         });
 
-        
+
     }
 
     render(){
@@ -24,6 +26,9 @@ class Dashboard extends React.Component {
             <div className="row text-center">
             <div className="col">
             <h1>Dashboard</h1>
+            </div>
+            <div className="col">
+                {this.state.name}
             </div>
             <div className="col">
             <a href="/order"><button className="btn btn-warning">Create New Order</button></a>

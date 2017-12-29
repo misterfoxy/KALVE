@@ -1,4 +1,5 @@
 const Authentication = require('./controllers/authentication');
+const ProofRequest = require("./controllers/proofrequest");
 const passportService = require("./services/passport.js");
 const passport = require("passport");
 
@@ -13,6 +14,6 @@ module.exports = function(app) {
     app.post('/signin', requireSignin, Authentication.signin)
     app.post('/signup', Authentication.signup)
     
-    
+    app.post('/proofrequest', ProofRequest.submitProof);
     
 };

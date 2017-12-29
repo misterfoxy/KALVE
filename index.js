@@ -9,7 +9,7 @@ const cors = require("cors");
 
 // DB SETUP
 
-mongoose.connect("mongodb://localhost:kalvedb");
+mongoose.connect("mongodb://localhost/kalvedb");
 
 
 // App Setup Middleware

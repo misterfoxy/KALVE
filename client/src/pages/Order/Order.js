@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import ColorPallette from "../../components/ColorPallette";
 import "./Order.css";
-
+import API from "../../utils/API"
 
 class Order extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             quantity: 0,
             price: 0.00,
             perUnitPrice: 0.0,
-            selectedOption: 'ccss'
+            selectedOption: 'ccss',
+            additionalInfo: "",
+            jwt: localStorage.getItem('jwtToken'),
+            color: 'red',
+            localPickup: true,
+
             
         };
         
@@ -28,9 +33,10 @@ class Order extends React.Component {
     }
 
     handleChange(event){
-        let value = event.currentTarget.value;
+        const {name, value} = event.target;
+       
         this.setState({
-            quantity: value
+            [name]: value
         });
         this.computePrice(value);
         
@@ -41,12 +47,16 @@ class Order extends React.Component {
 
         const newOrder = {
             brand: this.state.selectedOption,
+            color: "red",
             quantity: this.state.quantity,
-            price: this.state.price,
-            perUnitPrice: this.state.perUnitPrice
+            description: this.state.additionalInfo,
+            perUnitPrice: this.state.perUnitPrice,
+            totalCost: this.state.price,
+            localPickup: true
         }
 
-        console.log(newOrder);
+        API.submitProof(newOrder);
+
     }
 
     computePrice(quantity) {
@@ -163,26 +173,28 @@ class Order extends React.Component {
                     
                 </div>
 
-                <div className="row colors">  
-                    <div className="col btn-group">
+                <div className="row colors form-group">  
+                    <div className="col">
                         <ColorPallette />
                         
                     </div>
-                </div>
-                <div className="form-group text-center center-block row">
-                    
-                    <div className="col">
-                        <input onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
+                    <div className="col-4">
                     </div>
+                    <div className="col">
+                        <label htmlFor="quantity"> How many?
+                        <input className="form-control" value={this.state.quantity} name="quantity" onChange={this.handleChange.bind(this)} placeholder="How many do you want?"></input>
+                        </label>
+                        </div>
                 </div>
+                
 
                 
-               <div className="form-group row">
-                
-                <input type="file" name="design_reference"></input>
+               <div className="form-control row">
+                <label htmlFor="design_reference">Attach any pictures that would help the design team</label>
+                <input className="form-control file-input" type="file" name="design_reference"></input>
                 <div className="col-10">
-                    <label for="additional">Describe your order to us</label>
-                    <textarea class="form-control" rows="5" id="additional" />
+                    <label htmlFor="additional">Describe your order to us</label>
+                    <textarea value={this.state.additionalInfo} name="additionalInfo" onChange={this.handleChange.bind(this)} className="form-control" rows="5" id="additional" />
                 </div>
               </div>
               <div className="row totalPrices text-center">
@@ -197,7 +209,7 @@ class Order extends React.Component {
               <div className="row text-center">
               
                 <div className="col-12">
-                    <button onClick={this.handleOrderRequest}id="submitProofRequest" className="btn btn-default">SUBMIT ORDER REQUEST</button>
+                    <button onClick={this.handleOrderRequest} id="submitProofRequest" className="btn btn-default">SUBMIT ORDER REQUEST</button>
                 </div>
               </div>
             </div>

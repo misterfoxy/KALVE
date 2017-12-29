@@ -12,7 +12,9 @@ export default {
         console.log(res);
         
         const token = res.data.token;
+        const name = res.data.name;
         localStorage.setItem('jwtToken', token)
+        localStorage.setItem('name', name);
         setAuthorizationToken(token);
         
         })
@@ -33,5 +35,15 @@ export default {
       .catch(function(err){
         console.log(err);
       })
+  },
+
+  submitProof: function(proof){
+    console.log(proof);
+    axios.post(`${ROOT_URL}/proofrequest`, proof)
+      .then(function(res){
+        console.log(res);
+      })
+
+      .catch(function(err){console.log(err)});
   }
 };
