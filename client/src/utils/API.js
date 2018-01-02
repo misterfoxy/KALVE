@@ -13,8 +13,10 @@ export default {
         
         const token = res.data.token;
         const name = res.data.name;
+        const user = res.data.username;
         localStorage.setItem('jwtToken', token)
         localStorage.setItem('name', name);
+        localStorage.setItem('user', user);
         setAuthorizationToken(token);
         
         })
@@ -46,4 +48,6 @@ export default {
 
       .catch(function(err){console.log(err)});
   }
+
+  
 };

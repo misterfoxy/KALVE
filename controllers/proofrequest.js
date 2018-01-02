@@ -4,7 +4,7 @@ const Proof = require("../models/proof.js")
 
 exports.submitProof = function(req, res, next){
     console.log(req);
-    
+    const user = req.body.user;
     const brand = req.body.brand;
     const color = req.body.color;
     const quantity = req.body.quantity;
@@ -14,6 +14,7 @@ exports.submitProof = function(req, res, next){
     const localPickup = req.body.localPickup
 
     const proof = new Proof({
+        user: user,
         brand: brand,
         color: color,
         quantity: quantity,

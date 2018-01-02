@@ -36,7 +36,10 @@ class Login extends Component {
       
         API.checkLogin(newUser);
         this.setState({ "loggedIn": true })
-        history.push("/dashboard")
+        if(this.state.loggedIn === true){
+            history.push("/dashboard")
+        }
+        
     };
 
     

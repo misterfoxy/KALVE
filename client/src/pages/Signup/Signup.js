@@ -37,6 +37,7 @@ class Signup extends Component {
 
         API.saveUser(newUser);
         this.setState({"loggedIn": true});
+        
         history.push("/dashboard");
 
 

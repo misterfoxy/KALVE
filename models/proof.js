@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const proofSchema = new Schema ({
-
+    user: String,
     brand: String,
     color: String,
     quantity: Number,

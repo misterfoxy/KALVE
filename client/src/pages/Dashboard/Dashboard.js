@@ -8,17 +8,24 @@ class Dashboard extends React.Component {
             jwt: null,
             name: null
         }
+
+
     }
-    componentDidMount() {
-        // const jwt = localStorage.getItem('jwtToken');
+
+    componentWillMount() {
+    
+      try {
+        const jwt = localStorage.getItem('jwtToken');
         const name = localStorage.getItem('name');
         this.setState({
-            // jwt: jwt,
+            jwt: jwt,
             name: name
-        });
-
-
+            });
+        } catch (e){
+            //nothing
+        }
     }
+   
 
     render(){
         return(

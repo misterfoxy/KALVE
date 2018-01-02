@@ -7,6 +7,7 @@ class Order extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            user: null,
             quantity: 0,
             price: 0.00,
             perUnitPrice: 0.0,
@@ -23,6 +24,12 @@ class Order extends React.Component {
         
     };
 
+    componentWillMount() {
+        const user = localStorage.getItem('user');
+        this.setState({
+            user: user
+        })
+    }
     handleOptionChange(changeEvent) {
         console.log(changeEvent.target.value);
         this.setState({
@@ -46,6 +53,7 @@ class Order extends React.Component {
         e.preventDefault();
 
         const newOrder = {
+            user: this.state.user,
             brand: this.state.selectedOption,
             color: "red",
             quantity: this.state.quantity,
@@ -56,6 +64,8 @@ class Order extends React.Component {
         }
 
         API.submitProof(newOrder);
+        const { history } = this.props;
+        history.push("/dashboard");
 
     }
 
